@@ -7,7 +7,7 @@ def run():
     for index, arg in enumerate(sys.argv[1:]):
         try:
             data, width, height = decoder.decode(arg)
-            draw_image(bytes(data), width, height)
+            draw_image(data, width, height)
         except pngdec.PngDecoder.InvalidSignatureException:
             print(f'{arg} is not a valid PNG file')
 

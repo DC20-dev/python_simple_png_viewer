@@ -21,7 +21,7 @@ class PngDecoder:
             if chunk_type == b'IEND':   # end of file
                 break
         self.__process_chunks(chunks)
-        return (self.reconstructed_data, self.width, self.height)
+        return (bytes(self.reconstructed_data), self.width, self.height)
 
     def __read_chunk(self, file):
         """returns (chunk_type, chunk_data)"""
