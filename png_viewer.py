@@ -8,8 +8,10 @@ def run():
         try:
             data, width, height = decoder.decode(arg)
             draw_image(data, width, height)
-        except pngdec.PngDecoder.InvalidSignatureException:
-            print(f'{arg} is not a valid PNG file')
+        except pngdec.PngDecoder.InvalidSignatureException as e:
+            print(e.message)
+        except FileNotFoundError as e:
+            print(f"No such file: {arg}")
 
 def draw_image(raw_data, width, height):
     image = Image.frombytes("RGBA", (width, height),raw_data)
